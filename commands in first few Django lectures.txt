@@ -91,3 +91,88 @@ python manage.py runserver
 
 -------------------Models templates view-----------------------------
 
+
+#Models, templates, Views example, lecture 132
+
+activate myDjangoEnv
+django-admin startproject Pro3
+cd Pro3
+python manage.py startapp ProApp
+mkdir templates
+cd templates
+mkdir ProApp
+cd ProApp
+type nul > user.html
+type nul > index.html
+
+#settings.py file
+## create template directory link
+  TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+## add TEMPLATE_DIR, to 'DIRS' key in Templates list
+## add the new app
+  'ProApp' to INSTALLED_APPS list
+
+
+#go to ProApp and open models.py to create models
+class User(models.Model):
+  first_name = models.CharField(max_length=128)
+  last_name = models.CharField(max_length=128)
+  emails = models.EmailField(max_length=264,unique=True)
+
+#go to Views
+# import Models
+ from ProApp.models import User
+# set up index
+def index(request):
+  return render(request, 'ProApp/index.html')
+# set up model view
+def users(request):
+    user_list = User.objects.order_by('last_name')
+    user_dict = {'users': user_list}
+    return render(request, 'ProApp/users.html', context=user_dict)
+
+
+cd ..
+cd ProApp
+type nul > urls.py
+
+#go to app url file and add code so that views can be found
+from django.conf.urls import url
+from ProApp import views
+urlpatterns = [
+    url (r'^$', views.users,name='users'),
+]
+
+#go to project url file and add/amend code so that index and user can be found
+#index will be function view, and user will with 'include'
+from django.conf.urls import url, include
+from django.contrib import admin
+from ProApp import views
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url (r'^$', views.index,name='index'),
+    url(r'^users/', include('ProApp.urls')),
+]
+
+python manage.py migrate
+python manage.py makemigrations ProApp
+python manage.py migrate
+
+#tell admin file about model
+from ProApp.models import User
+admin.site.register(User)
+
+python manage.py runserver  -> should yield blank page, and if /admin added, show login page
+
+python manage.py createsuperuser
+Username (leave blank to use 'ahmed'):
+Email address: wx19@mail.com
+Password: ba123456
+
+#populate database with fake data
+type  nul > populate_users.py
+#Take a look at populate_users.py for code
+
+
+
+
