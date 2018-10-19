@@ -175,7 +175,8 @@ type  nul > populate_users.py
 #Take a look at populate_users.py for code
 
 #set up template
-# take a look at code users.html in My_Django_Stuff\Pro3\templates\ProApp (https://www.dropbox.com/sh/5ezmani995bs372/AADbEycgmwoH3KMVHlqclYgfa?dl=0)
+# take a look at code users.html in My_Django_Stuff\Pro3\templates\ProApp 
+(https://www.dropbox.com/sh/5ezmani995bs372/AADbEycgmwoH3KMVHlqclYgfa?dl=0)
 ---> http://127.0.0.1:8000/users/
 
 #See another example in first_project
