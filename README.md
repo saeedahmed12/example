@@ -1,5 +1,4 @@
-# Example Repository
-This is a sample repo, hello world!
-something change from before
+# This # gives it a heading 
 
-A third change
+
+In this example-repo, started 10.18.18, I'll be putting in materials before I really learn how to use github. 
