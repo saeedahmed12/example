@@ -1,0 +1,80 @@
+  doskey /History
+  conda create --name myDjangoEnv python=3.5
+  conda info --envs
+  activate myDjangoEnv
+  conda install django=1.10  [remember to install in VENV]
+  deactivate
+  
+  mkdir my_Django_Stuff
+  activate myDjangoEnv
+  django-admin startproject first_project  [creates a project]
+
+  activate myDjangoEnv
+  cd My_Django_Stuff
+  cd first_project
+  python manage.py runserver
+
+  python manage.py startapp first_app  [creates an app]
+
+add first_app to INSTALLED_APPS list in first_project settings
+
+create view in project (each view exists as its own independent function in views.py file in app)
+
+In views file, 
+Py from django.http import HttpResponse
+
+Py def index(request):
+ 	return HttpResponse('hello world')
+ 
+map view to urls.py file in project
+
+Py from first_app import views
+add url to urlpatterns list
+Py 'url(r'^$', views.index),
+
+-----------------------installing UML
+activate myDjangoEnv
+conda install graphviz
+conda install -c conda-forge django-extensions
+pip install pyparsing==1.5.6
+conda install pydot
+
+PY add 'django_extensions' to Installed Apps list in project settings
+
+python manage.py graph_models -a -o test.png
+
+
+https://learn.yancyparedes.net/2016/02/generating-uml-class-diagram-from-django-model/
+
+------------------------setting up initial sqllite database in django
+
+activate myDjangoEnv
+python manage.py migrate
+python makemigrations first_app
+python manage.py makemigrations first_app
+python makemigrations first_app
+python manage.py migrate
+python manage.py shell
+
+#check to see if it worked
+>>> from first_app.models import Topic
+>>> print(Topic.objects.all())
+<QuerySet [<Topic: News>, <Topic: Marketplace>, <Topic: Games>, <Topic: Social>, <Topic: Search>]>
+>>> t = Topic(top_name="Social Network")
+>>> t.save()
+>>> print(Topic.objects.all())
+<QuerySet [<Topic: News>, <Topic: Marketplace>, <Topic: Games>, <Topic: Social>, <Topic: Search>, <Topic: Social Network>]>
+>>> quit()
+
+# Register models in admin.py model
+
+python manage.py createsuperuser
+Username (leave blank to use 'ahmed'):
+Email address: saeedahmed12@hotmail.com
+Password: ba123456
+
+python manage.py runserver
+
+# http://127.0.0.1:8000/admin/
+
+
