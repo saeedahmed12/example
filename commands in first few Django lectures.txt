@@ -48,11 +48,12 @@ https://learn.yancyparedes.net/2016/02/generating-uml-class-diagram-from-django-
 
 ------------------------setting up initial sqllite database in django
 
+#Setup models folder (lecture 128)
+
+#Build Sql database
 activate myDjangoEnv
-python manage.py migrate
-python makemigrations first_app
-python manage.py makemigrations first_app
-python makemigrations first_app
+python manage.py migrate                   #in project folder
+python manage.py makemigrations first_app  #register changes to app
 python manage.py migrate
 python manage.py shell
 
@@ -77,4 +78,16 @@ python manage.py runserver
 
 # http://127.0.0.1:8000/admin/
 
+
+------------------------populating with fake data (lecture 129)--------------
+#get faker (pip install in right env)
+activate MyDjangoEnv
+pip install Faker
+
+#make new py file in project (in this case populate_first_app.py)
+python populate_first_app.py
+python manage.py runserver
+---------------------> fake data in website!
+
+-------------------Models templates view-----------------------------
 
