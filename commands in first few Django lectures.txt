@@ -3,6 +3,7 @@
   conda info --envs
   activate myDjangoEnv
   conda install django=1.10  [remember to install in VENV]
+  conda list
   deactivate
   
   mkdir my_Django_Stuff
