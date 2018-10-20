@@ -65,7 +65,7 @@ urlpatterns = [
 #runserver
 
 
----------------------Create a New App with template (app is 'personal')---------------
+---------------------Create a New App with template (app is 'personal'; project is Pro1)---------------
 
 #add personal to INSTALLED_APPS list in first_project settings
 
@@ -78,7 +78,7 @@ urlpatterns = [
     url(r'^$', include('personal.urls')),]
 --PY
 
-#create a url file in app and add patterns
+#create a urls.py file in app and add patterns
 Py--
 from django.conf.urls import url
 from . import views
@@ -94,10 +94,11 @@ def index(request):
     return render(request, 'personal/home.html')
 --PY
 
-
-
-
-
+# see this tutorial for the templates creates (three files: home.html, header.html, and htmlsnippets
+# created in directory:  personal/templates/personal/home.html; personal/templates/personal/header.html
+# and personal\templates\personal\includes\htmlsnippet.html
+---> https://pythonprogramming.net/jinja-templates-django-python-tutorial/
+------> https://www.dropbox.com/sh/75k4mqk6e1rty4f/AACZe2pK2tZR7OYBtY2EbquEa?dl=0
 
 #runserver
 -----------------------installing UML
