@@ -1,4 +1,4 @@
-  doskey /History
+------------------Install/Activate Django--------------------------
   conda create --name myDjangoEnv python=3.5
   conda info --envs
   activate myDjangoEnv
@@ -6,6 +6,7 @@
   conda list
   deactivate
   
+----------------Create Pro and runserver------------------------------------
   mkdir my_Django_Stuff
   activate myDjangoEnv
   django-admin startproject first_project  [creates a project]
@@ -15,24 +16,52 @@
   cd first_project
   python manage.py runserver
 
+----------------Create a new App------------------------------------
   python manage.py startapp first_app  [creates an app]
 
-add first_app to INSTALLED_APPS list in first_project settings
 
-create view in project (each view exists as its own independent function in views.py file in app)
-
-In views file, 
+#add first_app to INSTALLED_APPS list in first_project settings
+#create view in project (each view exists as its own independent function in views.py file in app)
+##In views file, 
 Py from django.http import HttpResponse
-
 Py def index(request):
  	return HttpResponse('hello world')
  
-map view to urls.py file in project
-
+#map view to urls.py file in project (this version doesn't use 'include')
 Py from first_app import views
 add url to urlpatterns list
 Py 'url(r'^$', views.index),
 
+#runserver
+
+
+---------------------Create a New App (use include for url mapping; and app in this case is 'Ap1')---------------
+
+#add Ap1 to INSTALLED_APPS list in first_project settings
+#create view in project 
+##In views file, 
+Py from django.http import HttpResponse
+Py def index(request):
+ 	return HttpResponse('hello world')
+  
+#in project urls.py file, import include, and add url pattern pointing to urls file in app
+Py from django.conf.urls import include
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^$', include('Ap1.urls')),   #add
+    url(r'^Ap1/', include('Ap1.urls')),  #add
+]
+
+#create a url file in app and add patterns
+PY--
+from django.conf.urls import url
+from Ap1 import views
+urlpatterns = [
+    url(r'^$', views.index, name='index'),      #this will allow http://localhost:8000/ and http://localhost:8000/Ap1/
+    url(r'^Ap1/', views.index, name='index'),]   #this will allow http://localhost:8000/Ap1/ and http://localhost:8000/Ap1/Ap1/
+--PY
+
+#runserver
 -----------------------installing UML
 activate myDjangoEnv
 conda install graphviz
