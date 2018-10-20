@@ -38,6 +38,7 @@ Py 'url(r'^$', views.index),
 ---------------------Create a New App (use include for url mapping; and app in this case is 'Ap1')---------------
 
 #add Ap1 to INSTALLED_APPS list in first_project settings
+
 #create view in project 
 ##In views file, 
 Py from django.http import HttpResponse
@@ -60,6 +61,43 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),      #this will allow http://localhost:8000/ and http://localhost:8000/Ap1/
     url(r'^Ap1/', views.index, name='index'),]   #this will allow http://localhost:8000/Ap1/ and http://localhost:8000/Ap1/Ap1/
 --PY
+
+#runserver
+
+
+---------------------Create a New App with template (app is 'personal')---------------
+
+#add personal to INSTALLED_APPS list in first_project settings
+
+#in project urls.py file, import include, and add url pattern pointing to urls file in app
+Py-- 
+from django.conf.urls import url,include
+from django.contrib import admin
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^$', include('personal.urls')),]
+--PY
+
+#create a url file in app and add patterns
+Py--
+from django.conf.urls import url
+from . import views
+urlpatterns = [
+    url(r'^$', views.index, name='index'),]
+--Py
+
+#create view in project 
+##In views file
+PY--
+from django.shortcuts import render
+def index(request):
+    return render(request, 'personal/home.html')
+--PY
+
+
+
+
+
 
 #runserver
 -----------------------installing UML
