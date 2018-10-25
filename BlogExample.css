@@ -15,7 +15,7 @@ h4, h1, div, hr {
 
 h4 {
 	text-transform: uppercase;
-	letter-spacing: 3px;
+	letter-spacing: 0.2rem;
 	color: #3498db;
 	padding-top: 1%;
 }
