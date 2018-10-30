@@ -1,49 +1,112 @@
-<div class="w3c-default"><p>Hello <strong>Everyone</strong>,</p>
-
-<p>Colt will be using the Array.forEach&nbsp;function in the next video. This note to provides further information about .forEach and how it works.</p>
-
-
-
-
-
-<p>.forEach takes a callback function, that callback function is expected to have at least 1, but up to 3, arguments. This is how <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" rel="nofollow" target="_blank">.forEach was designed</a>.</p>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
+     <!-- Bootstrap core CSS -->
+     <!-- Bootstrap core CSS -->
+
+<link href="https://getbootstrap.com/docs/3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Tufte-->
+    <link rel="stylesheet" href="https://edwardtufte.github.io/tufte-css/tufte.css"/>
+    <link rel="stylesheet" href="https://edwardtufte.github.io/tufte-css/latex.css"/>
+
+ <style>
+body {padding-left: 10%;}
+section > p, section > footer, section > table {width: 60%;}
+pre {border-width: 0px; background-color: #f9f2f4;}
+code{
+  background-color: #f9f2f4;
+  color: #333
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+ padding-left: 15%;
+
+
+}
+
+li {
+    display: inline;
+    padding-right: 10px;
+    text-decoration: none;
+}
+
+
+.dropdown-menu>li {
+  padding: 0px;
+}
+
+.navbar-default {
+  border: 0;
+}
+
+ </style>
+
+    <title>x</title>
+  </head>
+  <body>
+
+
+    <!-- CONTENT BELOW-->
+
+
+    <article>
+
+          <section>
+           <p>
+           	Hello Everyone,<br>
+
+			Colt will be using the Array.forEach function in the next video. This note to provides further information about .forEach and how it works.
+			.forEach takes a callback function, that callback function is expected to have at least 1, but up to 3, arguments. This is how .forEach was designed. <br><br>
+
+			The arguments are in a specific order: <br>
+			- The first one represents each element in the array (per loop iteration) that .forEach was called on. <br>
+			- The second represents the index of said element. <br>
+			- The third represents the array that .forEach was called on (it will be the same for every iteration of the loop). <br><br>
+
+			You have a couple options when calling .forEach on an array: <br>
+
+			You can pass in an anonymous function: <br>
+
+			<pre class='code'>
+[1,2,3].forEach(function(el, i, arr) {
+  console.log(el, i, arr);
+});</pre>
+
+			<p>Or you can pass in a pre-written, named function.</p>
+
+			<pre class='code'>
+function logNums(el, i, arr) {
+  console.log(el, i, arr);
+}
+[1,2,3].forEach(logNums);
+			 </pre>
+
+
+           </p>
+          </section>
+        </article>
+    <!-- CONTENT ABOVE-->
 
 
 
-<p>The arguments are in a specific order:<br>- The first one represents each element in the array (per loop iteration) that .forEach was called on.<br>- The second represents the index of said element.<br>- The third represents the array that .forEach was called on (it will be the same for every iteration of the loop).</p>
-
-
-
-
-
-<p>You have a couple&nbsp;options when calling .forEach on an array:<br><br>You can pass in an anonymous function:<br></p>
-
-
-
-
-
-<div class="ud-component--base-components--code-block" ng-non-bindable=""><div><pre class="prettyprint linenums prettyprint linenums prettyprinted" role="presentation" style=""><ol class="linenums"><li class="L0"><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">3</span><span class="pun">].</span><span class="pln">forEach</span><span class="pun">(</span><span class="kwd">function</span><span class="pun">(</span><span class="pln">el</span><span class="pun">,</span><span class="pln"> i</span><span class="pun">,</span><span class="pln"> arr</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span></li><li class="L1"><span class="pln">  console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">el</span><span class="pun">,</span><span class="pln"> i</span><span class="pun">,</span><span class="pln"> arr</span><span class="pun">);</span></li><li class="L2"><span class="pun">});</span></li></ol></pre></div></div>
-
-
-
-
-
-
-
-
-
-<p>Or you can pass in&nbsp;a pre-written, named function.</p>
-
-
-
-
-
-<div class="ud-component--base-components--code-block" ng-non-bindable=""><div><pre class="prettyprint linenums prettyprint linenums prettyprinted" role="presentation" style=""><ol class="linenums"><li class="L0"><span class="kwd">function</span><span class="pln"> logNums</span><span class="pun">(</span><span class="pln">el</span><span class="pun">,</span><span class="pln"> i</span><span class="pun">,</span><span class="pln"> arr</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span></li><li class="L1"><span class="pln">  console</span><span class="pun">.</span><span class="pln">log</span><span class="pun">(</span><span class="pln">el</span><span class="pun">,</span><span class="pln"> i</span><span class="pun">,</span><span class="pln"> arr</span><span class="pun">);</span></li><li class="L2"><span class="pun">}</span></li><li class="L3"><span class="pln">&nbsp;</span></li><li class="L4"><span class="pun">[</span><span class="lit">1</span><span class="pun">,</span><span class="lit">2</span><span class="pun">,</span><span class="lit">3</span><span class="pun">].</span><span class="pln">forEach</span><span class="pun">(</span><span class="pln">logNums</span><span class="pun">);</span></li></ol></pre></div></div>
-
-
-
-<p>Notice how in&nbsp;the second example we don't invoke logNums when passing it into .forEach?&nbsp;We simply pass in the function name. We don't need to invoke the logNums function, .forEach does that for us. In fact, it invokes the function multiple times, once for every element inside of the array.</p>
-
-<p>I hope that helped clear some things up, please post a question in the Q&amp;A if you're unsure of anything that I've shared above.<br><br>cheers,<br>Ian</p></div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+      window.jQuery || document.write('<script src="https://getbootstrap.com/docs/3.3/assets/js/vendor/jquery.min.js')
+    </script>
+    <script src="https://getbootstrap.com/docs/3.3/dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="https://getbootstrap.com/docs/3.3/assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script src="script.js" ></script>
+  </body>
+</html>
